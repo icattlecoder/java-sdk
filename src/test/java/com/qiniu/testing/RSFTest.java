@@ -53,11 +53,15 @@ public class RSFTest extends TestCase {
 
 			// upload 3 files
 			for (int i = 0; i < 3; i++) {
-				PutRet ret = IoApi.putFile(uptoken, key + "_" + i, new File(localFile), extra);
+				PutRet ret = IoApi.putFile(uptoken, key + "_" + i, localFile, extra);
 				assertTrue(ret.ok());
 				assertTrue(expectedHash.equals(ret.getHash()));
 			}
-			
+			PutRet ret = IoApi
+					.putFile(uptoken, key, localFile, extra);
+
+			assertTrue(ret.ok());
+			assertTrue(expectedHash.equals(ret.getHash()));
 		}
 		// we don't checkout the result of how may items are in the buckets.
 		// not very convient, it's better, although.

@@ -1,5 +1,18 @@
 ## CHANGE LOG
 
+### v6.0.3
+
+2013-08-5 issue [#76](https://github.com/qiniu/java-sdk/pull/76)
+
+Bug fix，编码强制UTF-8修复
+
+### v6.0.1
+
+2013-08-5 issue [#74](https://github.com/qiniu/java-sdk/pull/74)
+
+Bug fix，增加PutPolicy类的 callbackBody字段到PutPolicy的Json格式中
+
+
 ### v6.0.0
 
 2013-07-01 issue [#64](https://github.com/qiniu/java-sdk/pull/64)
