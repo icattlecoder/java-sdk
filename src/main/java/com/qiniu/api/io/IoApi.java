@@ -30,9 +30,6 @@ public class IoApi {
 			return new PutRet(new CallRet(400, new Exception(
 					"File does not exist or not readable.")));
 		}
-		if (key == null) {
-			key = UNDEFINED_KEY;
-		}
 		MultipartEntity requestEntity = new MultipartEntity();
 		try {
 			requestEntity.addPart("token", new StringBody(uptoken));
@@ -125,4 +122,4 @@ public class IoApi {
 		}
 		return crc;
 	}
-}
+}                       
