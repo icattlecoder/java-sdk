@@ -38,7 +38,9 @@ public class IoApi {
 			requestEntity.addPart("token", new StringBody(uptoken));
 			FileBody fileBody = new FileBody(file);
 			requestEntity.addPart("file", fileBody);
-			requestEntity.addPart("key", new StringBody(key,Charset.forName("utf-8")));
+			if (key == null){
+				requestEntity.addPart("key", new StringBody(key,Charset.forName("utf-8")));
+			}
 			if (extra.checkCrc != NO_CRC32) {
 				if (extra.crc32 == 0) {
 					return new PutRet(new CallRet(400, new Exception("no crc32 specified!")));
@@ -61,7 +63,9 @@ public class IoApi {
 			requestEntity.addPart("token", new StringBody(uptoken));
 			InputStreamBody inputBody= new InputStreamBody(reader,key);
 			requestEntity.addPart("file", inputBody);
-			requestEntity.addPart("key", new StringBody(key,Charset.forName("utf-8")));
+			if (key == null){
+				requestEntity.addPart("key", new StringBody(key,Charset.forName("utf-8")));
+			}
 			if (extra.checkCrc != NO_CRC32) {
 				if (extra.crc32 == 0) {
 					return new PutRet(new CallRet(400, new Exception("no crc32 specified!")));
@@ -80,10 +84,7 @@ public class IoApi {
 	
 	
 	public static PutRet Put(String uptoken,String key,InputStream reader,PutExtra extra)
-	{		
-		if (key == null) {
-			key = UNDEFINED_KEY;
-		}
+	{
 		PutRet ret = putStream(uptoken,key,reader,extra);
 		return ret;
 	}
