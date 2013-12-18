@@ -35,7 +35,7 @@ public class IoApi {
 			requestEntity.addPart("token", new StringBody(uptoken));
 			FileBody fileBody = new FileBody(file);
 			requestEntity.addPart("file", fileBody);
-			if (key == null){
+			if (key != null){
 				requestEntity.addPart("key", new StringBody(key,Charset.forName("utf-8")));
 			}
 			if (extra.checkCrc != NO_CRC32) {
@@ -60,7 +60,7 @@ public class IoApi {
 			requestEntity.addPart("token", new StringBody(uptoken));
 			InputStreamBody inputBody= new InputStreamBody(reader,key);
 			requestEntity.addPart("file", inputBody);
-			if (key == null){
+			if (key != null){
 				requestEntity.addPart("key", new StringBody(key,Charset.forName("utf-8")));
 			}
 			if (extra.checkCrc != NO_CRC32) {
