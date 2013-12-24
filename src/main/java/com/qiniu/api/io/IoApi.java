@@ -58,7 +58,8 @@ public class IoApi {
 		MultipartEntity requestEntity = new MultipartEntity();
 		try {
 			requestEntity.addPart("token", new StringBody(uptoken));
-			InputStreamBody inputBody= new InputStreamBody(reader,key);
+			
+			InputStreamBody inputBody= new InputStreamBody(reader,"file");
 			requestEntity.addPart("file", inputBody);
 			if (key != null){
 				requestEntity.addPart("key", new StringBody(key,Charset.forName("utf-8")));
